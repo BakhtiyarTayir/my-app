@@ -9,15 +9,26 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="container">
-        <ul class="list-group">
-            <li class="list-group-item"><a href="{{ route('main') }}">Main</a></li>
-            <li class="list-group-item"><a href="{{ route('about') }}">About</a></li>
-            <li class="list-group-item"><a href="{{ route('post') }}">Post</a></li>
-            <li class="list-group-item"><a href="{{ route('contact') }}">Contacts</a></li>
-        </ul>
-    </nav>
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                </a>
 
-    @yield('content')
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="{{ route('main') }}" class="nav-link px-2 link-body-emphasis">Home</a></li>
+                    <li><a href="{{ route('index') }}" class="nav-link px-2 link-body-emphasis">Post</a></li>
+                    <li><a href="{{ route('about') }}" class="nav-link px-2 link-body-emphasis">About</a></li>
+                    <li><a href="{{ route('contact') }}" class="nav-link px-2 link-body-emphasis">Contacts</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        @yield('content')
+    </div>
+
 </body>
 </html>
