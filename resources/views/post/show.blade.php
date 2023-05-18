@@ -4,6 +4,7 @@
         <h2> {{ $post->title }} </h2>
         <p>{{$post->content }}</p>
         <p>{{$post->image }}</p>
+
     </div>
     <div class="d-flex gap-3 mb-3">
         <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">Edit</a>
