@@ -15,12 +15,18 @@
             <input type="text" name="image" class="form-control" id="image">
         </div>
         <div class="mb-3">
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category_id">
+            <select class="form-select" aria-label=".form-select-sm example" name="category_id">
 
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}"> {{ $category->title }}</option>
                 @endforeach
-
+            </select>
+        </div>
+        <div class="mb-3">
+            <select multiple class="form-select" aria-label="select example" id="tags" name="tags[]">
+                @foreach($tags as $tag)
+                    <option value="{{$tag->id}}">{{ $tag->title }}</option>
+                @endforeach
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
