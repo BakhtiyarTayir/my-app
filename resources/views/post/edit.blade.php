@@ -25,6 +25,13 @@
 
             </select>
         </div>
+        <div class="mb-3">
+            <select multiple class="form-select" name="tags[]" id="tags">
+                @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 @endsection
