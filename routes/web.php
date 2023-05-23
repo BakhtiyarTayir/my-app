@@ -17,15 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->name('index');
-Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+Route::group(['namespace'=> ''], function (){
+    Route::get('/posts', [\App\Http\Controllers\Post\IndexController::class, '__invoke'])->name('index');
+    Route::get('/posts/create', [\App\Http\Controllers\Post\CreateController::class, '__invoke'])->name('post.create');
 
-Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('store');
-Route::get('/posts/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('post.show');
-Route::get('/posts/{post}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
-Route::patch('/posts/{post}', [\App\Http\Controllers\PostController::class, 'update'])->name('post.update');
-Route::delete('/posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('post.delete');
-
+    Route::post('/posts', [\App\Http\Controllers\Post\StoreController::class, '__invoke'])->name('store');
+    Route::get('/posts/{post}', [\App\Http\Controllers\Post\ShowController::class, '__invoke'])->name('post.show');
+    Route::get('/posts/{post}/edit', [\App\Http\Controllers\Post\EditController::class, '__invoke'])->name('post.edit');
+    Route::patch('/posts/{post}', [\App\Http\Controllers\Post\UpdateController::class, '__invoke'])->name('post.update');
+    Route::delete('/posts/{post}', [\App\Http\Controllers\Post\DestroyController::class, '__invoke'])->name('post.delete');
+});
 Route::get('/posts/update', [\App\Http\Controllers\PostController::class, 'update']);
 Route::get('/posts/delete', [\App\Http\Controllers\PostController::class, 'delete']);
 Route::get('/posts/first_or_create', [\App\Http\Controllers\PostController::class, 'firstOrCreate']);
