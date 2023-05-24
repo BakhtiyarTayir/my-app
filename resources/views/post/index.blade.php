@@ -5,5 +5,9 @@
         @foreach($posts as $post)
             <h3><a href="{{ route('post.show', $post->id) }}">{{ $post->id }}. {{ $post->title }} </a></h3>
         @endforeach
+
+        <div class="mt-4">
+            {{ $posts->links() }}
+        </div>
     </div>
 @endsection
