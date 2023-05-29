@@ -15,6 +15,7 @@ class Service
 
         $post->tags()->attach($tags);
 
+        return $post;
     }
 
     public function update($post, $data)

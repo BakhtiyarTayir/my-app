@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [\App\Http\Controllers\HomezController::class, 'index'])->name('home');
 
 Route::group(['namespace'=> ''], function (){
     Route::get('/posts', [\App\Http\Controllers\Post\IndexController::class, '__invoke'])->name('index');
