@@ -16,15 +16,14 @@ class IndexController extends BaseController
         $data = $request->validated();
 
         $page = $data['page'] ?? 1;
-        $per_page = $data['per_page'] ?? 1;
-
+        $per_page = $data['per_page'] ?? 15;
         $filter = app()->make(PostFilter::class, ['queryParams'=>array_filter($data)]);
 
         $posts = Post::filter($filter)->paginate($per_page, ['*'], 'page', $page);
 
-        return PostResource::collection($posts);
+//        return PostResource::collection($posts);
 
-//        $categories = Category::all();
-//        return view('post.index', compact('posts', 'categories'));
+        $categories = Category::all();
+        return view('post.index', compact('posts', 'categories'));
     }
 }

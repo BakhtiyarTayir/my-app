@@ -31,3 +31,10 @@ Route::group([
     Route::post('me', 'AuthController@me');
 
 });
+
+Route::group([
+    'namespace'=>'Post',
+    'middleware'=>'jwt.auth'
+], function (){
+    Route::get('/posts', [\App\Http\Controllers\Post\IndexController::class, '__invoke'])->name('index');
+});
